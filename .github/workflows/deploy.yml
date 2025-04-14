@@ -20,4 +20,4 @@ jobs:
           aws-region: us-east-1  # Change if needed
 
       - name: Sync files to S3
-        run: aws s3 sync . s3://task-manager-frontend-404 --exclude ".git/*" --exclude ".github/*" --delete
+        run: aws s3 sync . s3://mytaskmanager9669 --exclude ".git/*" --exclude ".github/*" --delete
