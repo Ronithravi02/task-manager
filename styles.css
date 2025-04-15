@@ -1,40 +1,93 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    padding: 2rem;
-    max-width: 600px;
-    margin: auto;
-    background-color: #f9f9f9;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  input {
-    flex: 1;
-    padding: 0.5rem;
-  }
-  
-  button {
-    padding: 0.5rem 1rem;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    background-color: white;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+}
+
+/* Task List Styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li.completed {
+  background-color: #e0f7fa;
+  text-decoration: line-through;
+}
+
+/* Edit Modal Styling */
+#editModal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  margin: 0 auto;
+}
+
+#editModal input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#editModal button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Loading Spinner */
+#loadingSpinner {
+  display: none;
+  margin: 20px auto;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

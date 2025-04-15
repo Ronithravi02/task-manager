@@ -16,6 +16,20 @@
 
   <ul id="taskList"></ul>
 
+  <!-- Edit Task Modal -->
+  <div id="editModal" style="display:none; margin-top: 20px;">
+    <h3>Edit Task ✏️</h3>
+    <input type="text" id="editTitle" placeholder="New title" />
+    <input type="text" id="editDescription" placeholder="New description" />
+    <label>
+      Completed?
+      <input type="checkbox" id="editCompleted" />
+    </label>
+    <br /><br />
+    <button onclick="submitEdit()">💾 Save</button>
+    <button onclick="closeEdit()">❌ Cancel</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
