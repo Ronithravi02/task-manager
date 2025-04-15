@@ -4,63 +4,42 @@
   <meta charset="UTF-8">
   <title>Task Manager</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      position: relative;
-      z-index: 0;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.4); /* darker overlay for better contrast */
-      backdrop-filter: blur(4px); /* stronger blur */
-      z-index: -1;
-    }
-  </style>
 </head>
 <body>
-  <h1>Task Manager 📝</h1>
+  <div class="container">
+    <h1>Task Manager 📝</h1>
 
-  <!-- Task Form -->
-  <form id="taskForm">
-    <input type="text" id="title" placeholder="Task title" required />
-    <input type="text" id="description" placeholder="Description" required />
-    <button type="submit">Add Task</button>
-  </form>
+    <!-- Task Form -->
+    <form id="taskForm">
+      <input type="text" id="title" placeholder="Task title" required />
+      <input type="text" id="description" placeholder="Description" required />
+      <button type="submit">Add Task</button>
+    </form>
 
-  <!-- Toggle Button for Completed Tasks -->
-  <button onclick="toggleCompletedTasks()">Toggle Completed Tasks</button>
+    <!-- Toggle Button for Completed Tasks -->
+    <button onclick="toggleCompletedTasks()">Toggle Completed Tasks</button>
 
-  <!-- Active Tasks List -->
-  <h3>Active Tasks</h3>
-  <ul id="taskList"></ul>
+    <!-- Active Tasks List -->
+    <h3>Active Tasks</h3>
+    <ul id="taskList"></ul>
 
-  <!-- Completed Tasks List -->
-  <h3>Completed Tasks</h3>
-  <ul id="completedTasksList"></ul>
+    <!-- Completed Tasks List -->
+    <h3>Completed Tasks</h3>
+    <ul id="completedTasksList"></ul>
 
-  <!-- Edit Task Modal -->
-  <div id="editModal" style="display:none; margin-top: 20px;">
-    <h3>Edit Task ✏️</h3>
-    <input type="text" id="editTitle" placeholder="New title" />
-    <input type="text" id="editDescription" placeholder="New description" />
-    <label>
-      Completed?
-      <input type="checkbox" id="editCompleted" />
-    </label>
-    <br /><br />
-    <button onclick="submitEdit()">💾 Save</button>
-    <button onclick="closeEdit()">❌ Cancel</button>
+    <!-- Edit Task Modal -->
+    <div id="editModal" style="display:none; margin-top: 20px;">
+      <h3>Edit Task ✏️</h3>
+      <input type="text" id="editTitle" placeholder="New title" />
+      <input type="text" id="editDescription" placeholder="New description" />
+      <label>
+        Completed?
+        <input type="checkbox" id="editCompleted" />
+      </label>
+      <br /><br />
+      <button onclick="submitEdit()">💾 Save</button>
+      <button onclick="closeEdit()">❌ Cancel</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

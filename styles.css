@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url('background.png'); /* <-- make sure this matches your image filename */
+  background-image: url('background.png'); /* Make sure this file name matches exactly */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -16,9 +16,24 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 2rem;
+  position: relative;
+  z-index: 0;
 }
 
-/* Container around content for better contrast */
+/* Dark overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+/* Container around content */
 .container {
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 12px;
@@ -48,6 +63,19 @@ input {
 
 button {
   padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:focus {
+  outline: none;
 }
 
 /* Task List Styling */
@@ -107,21 +135,4 @@ li.completed {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-/* Button Styling */
-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-button:focus {
-  outline: none;
 }
