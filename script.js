@@ -21,10 +21,16 @@ async function loadTasks() {
     `;
 
     // Display task in the appropriate list based on completion status
-    if (task.completed && showCompletedTasksOnly) {
-      completedTasksList.appendChild(li);
-    } else if (!task.completed) {
-      taskList.appendChild(li);
+    if (showCompletedTasksOnly) {
+      if (task.completed) {
+        completedTasksList.appendChild(li);
+      }
+    } else {
+      if (task.completed) {
+        completedTasksList.appendChild(li); // For all tasks, completed ones go here
+      } else {
+        taskList.appendChild(li); // For non-completed tasks
+      }
     }
   });
 }
@@ -69,7 +75,7 @@ async function submitEdit() {
   };
 
   const response = await fetch(`${API_URL}/${currentEditTaskId}`, {
-    method: 'PUT',
+    method: 'PATCH', // Use PATCH for partial updates
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(updatedTask)
   });
