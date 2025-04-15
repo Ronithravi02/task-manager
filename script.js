@@ -1,4 +1,4 @@
-const API_URL = 'https://ze2ijde7hd.execute-api.us-east-1.amazonaws.com/tasks';
+const API_URL = 'https://tuuy7bl41g.execute-api.eu-north-1.amazonaws.com/tasks';
 
 async function loadTasks() {
   const response = await fetch(API_URL);
@@ -9,7 +9,10 @@ async function loadTasks() {
 
   tasks.forEach(task => {
     const li = document.createElement('li');
-    li.textContent = `${task.title} - ${task.description} [${task.completed ? '✅' : '❌'}]`;
+    li.innerHTML = `
+      ${task.title} - ${task.description} [${task.completed ? '✅' : '❌'}]
+      <button onclick="deleteTask('${task.taskid}')">🗑 Delete</button>
+    `;
     taskList.appendChild(li);
   });
 }
@@ -21,6 +24,15 @@ async function addTask(title, description) {
     body: JSON.stringify({ title, description })
   });
   await response.json();
+  loadTasks(); // Refresh task list
+}
+
+async function deleteTask(taskId) {
+  const response = await fetch(`${API_URL}/${taskId}`, {
+    method: 'DELETE'
+  });
+  const result = await response.json();
+  alert(result.message || 'Deleted');
   loadTasks(); // Refresh task list
 }
 
