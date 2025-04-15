@@ -1,12 +1,15 @@
 const API_URL = 'https://tuuy7bl41g.execute-api.eu-north-1.amazonaws.com/tasks';
 let currentEditTaskId = null;
+let showCompletedTasksOnly = false;
 
 async function loadTasks() {
   const response = await fetch(API_URL);
   const tasks = await response.json();
 
   const taskList = document.getElementById('taskList');
+  const completedTasksList = document.getElementById('completedTasksList');
   taskList.innerHTML = '';
+  completedTasksList.innerHTML = '';
 
   tasks.forEach(task => {
     const li = document.createElement('li');
@@ -16,7 +19,13 @@ async function loadTasks() {
       <button onclick="editTask('${task.taskId}', \`${task.title}\`, \`${task.description}\`, ${task.completed})">✏ Edit</button>
       <button onclick="deleteTask('${task.taskId}')">🗑 Delete</button>
     `;
-    taskList.appendChild(li);
+
+    // Display task in the appropriate list based on completion status
+    if (task.completed && showCompletedTasksOnly) {
+      completedTasksList.appendChild(li);
+    } else if (!task.completed) {
+      taskList.appendChild(li);
+    }
   });
 }
 
@@ -78,5 +87,11 @@ document.getElementById('taskForm').addEventListener('submit', function (e) {
   addTask(title, description);
   e.target.reset();
 });
+
+// Toggle between showing all tasks and only completed tasks
+function toggleCompletedTasks() {
+  showCompletedTasksOnly = !showCompletedTasksOnly;
+  loadTasks();
+}
 
 window.onload = loadTasks;

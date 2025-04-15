@@ -8,13 +8,23 @@
 <body>
   <h1>Task Manager 📝</h1>
 
+  <!-- Task Form -->
   <form id="taskForm">
     <input type="text" id="title" placeholder="Task title" required />
     <input type="text" id="description" placeholder="Description" required />
     <button type="submit">Add Task</button>
   </form>
 
+  <!-- Toggle Button for Completed Tasks -->
+  <button onclick="toggleCompletedTasks()">Toggle Completed Tasks</button>
+
+  <!-- Active Tasks List -->
+  <h3>Active Tasks</h3>
   <ul id="taskList"></ul>
+
+  <!-- Completed Tasks List -->
+  <h3>Completed Tasks</h3>
+  <ul id="completedTasksList"></ul>
 
   <!-- Edit Task Modal -->
   <div id="editModal" style="display:none; margin-top: 20px;">
